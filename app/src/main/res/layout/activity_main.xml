@@ -1,0 +1,621 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:id="@+id/inputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tipLayout"
+        app:layout_constraintTop_toBottomOf="@id/secondDivider">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Bill:"
+            android:layout_margin="5dp"
+            android:gravity="bottom"
+            android:layout_gravity="bottom"
+            android:textSize="25sp"
+            android:textColor="@color/colorAccent"  />
+
+        <TextView
+            android:id="@+id/inputText"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:layout_marginBottom="8dp"
+            android:gravity="right"
+            android:text="$"
+            android:layout_gravity="bottom"
+            android:textSize="30sp"
+            android:textColor="@color/colorAccent"  />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/secondDivider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_margin="5dp"
+        android:background="@color/colorAccent"
+        android:scaleY="0.2"
+        app:layout_constraintBottom_toTopOf="@id/tipSelectionLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/inputLayout" />
+
+    <LinearLayout
+        android:id="@+id/tipSelectionLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="5dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/secondDivider">
+
+        <Button
+            android:id="@+id/fivePercent"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/action_button_active_selector"
+            android:onClick="percentButton"
+            android:tag="5"
+            android:text="5%"
+            android:textAllCaps="false"
+            android:textColor="@color/colorAccent"
+            android:textSize="20dp" />
+
+        <Button
+            android:id="@+id/tenPercent"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/action_button_inactive_selector"
+            android:onClick="percentButton"
+            android:tag="10"
+            android:text="10%"
+            android:textAllCaps="false"
+            android:textColor="@color/colorAccent"
+            android:textSize="20dp" />
+
+        <Button
+            android:id="@+id/fifteenPercent"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/action_button_inactive_selector"
+            android:onClick="percentButton"
+            android:tag="15"
+            android:text="15%"
+            android:textAllCaps="false"
+            android:textColor="@color/colorAccent"
+            android:textSize="20dp" />
+
+        <Button
+            android:id="@+id/twentyPercent"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/action_button_inactive_selector"
+            android:onClick="percentButton"
+            android:tag="20"
+            android:text="20%"
+            android:textAllCaps="false"
+            android:textColor="@color/colorAccent"
+            android:textSize="20dp" />
+
+        <Button
+            android:id="@+id/twentyfivePercent"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/action_button_inactive_selector"
+            android:onClick="percentButton"
+            android:tag="25"
+            android:text="25%"
+            android:textAllCaps="false"
+            android:textColor="@color/colorAccent"
+            android:textSize="20dp" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/tipLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/thirdDivider"
+        app:layout_constraintTop_toBottomOf="@id/inputLayout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Tip:"
+            android:layout_margin="5dp"
+            android:gravity="bottom"
+            android:layout_gravity="bottom"
+            android:textSize="25sp"
+            android:textColor="@color/colorAccent"  />
+        <TextView
+            android:id="@+id/tipText"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:layout_marginBottom="8dp"
+            android:gravity="right"
+            android:text="$"
+            android:layout_gravity="bottom"
+            android:textSize="30sp"
+            android:textColor="@color/colorAccent"  />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/thirdDivider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="5dp"
+        android:background="@color/colorAccent"
+        android:scaleY="0.5"
+        app:layout_constraintBottom_toTopOf="@id/upDown"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tipLayout" />
+
+    <LinearLayout
+        android:id="@+id/upDown"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/totalLayout"
+        app:layout_constraintTop_toBottomOf="@id/thirdDivider">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Round:"
+            android:layout_margin="2dp"
+            android:gravity="bottom"
+            android:layout_gravity="bottom"
+            android:textSize="25sp"
+            android:textColor="@color/colorAccent"  />
+
+        <Button
+            android:id="@+id/up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:background="@drawable/action_button_inactive_selector"
+            android:text="Up"
+            android:tag="up"
+            android:onClick="roundButton"
+            android:textSize="20sp"
+            android:textAllCaps="false"
+            android:textColor="@color/colorAccent" />
+
+        <Button
+            android:id="@+id/down"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/action_button_inactive_selector"
+            android:layout_margin="2dp"
+            android:text="Down"
+            android:tag="down"
+            android:onClick="roundButton"
+            android:textSize="20sp"
+            android:textAllCaps="false"
+            android:textColor="@color/colorAccent" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/totalLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/fourthDivider"
+        app:layout_constraintTop_toBottomOf="@id/upDown">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Total:"
+            android:layout_margin="5dp"
+            android:gravity="bottom"
+            android:layout_gravity="bottom"
+            android:textSize="25sp"
+            android:textColor="@color/colorAccent"  />
+
+        <TextView
+            android:id="@+id/totalText"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginBottom="8dp"
+            android:gravity="right"
+            android:text="$"
+            android:layout_margin="5dp"
+            android:layout_gravity="bottom"
+            android:textSize="30sp"
+            android:textColor="@color/colorAccent"  />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/fourthDivider"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="5dp"
+        android:background="@color/colorAccent"
+        android:scaleY="0.2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/totalLayout"
+        app:layout_constraintBottom_toTopOf="@id/guestSeekBar"/>
+
+    <SeekBar
+        android:id="@+id/guestSeekBar"
+        android:layout_margin="5dp"
+        android:max="15"
+        android:min="1"
+        android:progress="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/guestLayout"
+        app:layout_constraintTop_toBottomOf="@id/fourthDivider">
+    </SeekBar>
+
+    <LinearLayout
+        android:id="@+id/guestLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/splitLayout"
+        app:layout_constraintTop_toBottomOf="@id/guestSeekBar">
+
+        <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="People:"
+        android:layout_margin="2dp"
+        android:gravity="bottom"
+        android:layout_gravity="bottom"
+        android:textSize="25sp"
+        android:textColor="@color/colorAccent"  />
+
+        <TextView
+            android:id="@+id/guestAmountText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="2dp"
+            android:gravity="right"
+            android:text="@string/_1"
+            android:layout_gravity="bottom"
+            android:textSize="25sp"
+            android:textColor="@color/colorAccent"  />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/splitLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/fifthDivider"
+        app:layout_constraintTop_toBottomOf="@id/guestLayout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Split:"
+            android:layout_margin="5dp"
+            android:gravity="bottom"
+            android:layout_gravity="bottom"
+            android:textSize="25sp"
+            android:textColor="@color/colorAccent"  />
+        <TextView
+            android:id="@+id/splitText"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginBottom="8dp"
+            android:gravity="right"
+            android:text="$"
+            android:layout_margin="5dp"
+            android:layout_gravity="bottom"
+            android:textSize="30sp"
+            android:textColor="@color/colorAccent"  />
+
+    </LinearLayout>
+
+
+    <View
+        android:id="@+id/fifthDivider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="5dp"
+        android:background="@color/colorAccent"
+        android:scaleY="0.2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/splitLayout"
+        app:layout_constraintBottom_toTopOf="@id/buttonLayout"/>
+
+    <LinearLayout
+        android:id="@+id/buttonLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="5dp"
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fifthDivider">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/sevenButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/keypad_button_selector"
+                    android:onClick="clickedNumberButton"
+                    android:tag="@string/_7"
+                    android:text="@string/_7"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="35sp" />
+
+                <Button
+                    android:id="@+id/eightButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/keypad_button_selector"
+                    android:text="@string/_8"
+                    android:tag="@string/_8"
+                    android:onClick="clickedNumberButton"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="35sp" />
+
+                <Button
+                    android:id="@+id/nineButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/keypad_button_selector"
+                    android:text="@string/_9"
+                    android:tag="@string/_9"
+                    android:onClick="clickedNumberButton"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="35sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/fourButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/keypad_button_selector"
+                    android:text="@string/_4"
+                    android:onClick="clickedNumberButton"
+                    android:tag="@string/_4"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="35sp" />
+
+                <Button
+                    android:id="@+id/fiveButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/keypad_button_selector"
+                    android:text="@string/_5"
+                    android:onClick="clickedNumberButton"
+                    android:tag="@string/_5"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="35sp" />
+
+                <Button
+                    android:id="@+id/sixButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/keypad_button_selector"
+                    android:text="@string/_6"
+                    android:onClick="clickedNumberButton"
+                    android:tag="@string/_6"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="35sp" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/oneButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/keypad_button_selector"
+                    android:text="@string/_1"
+                    android:onClick="clickedNumberButton"
+                    android:tag="@string/_1"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="35sp" />
+
+                <Button
+                    android:id="@+id/twoButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/keypad_button_selector"
+                    android:text="@string/_2"
+                    android:onClick="clickedNumberButton"
+                    android:tag="@string/_2"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="35sp" />
+
+                <Button
+                    android:id="@+id/threeButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/keypad_button_selector"
+                    android:text="@string/_3"
+                    android:onClick="clickedNumberButton"
+                    android:tag="@string/_3"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="35sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/deleteButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/keypad_button_selector"
+                    android:tag="d"
+                    android:text="⌫"
+                    android:onClick="clickedNumberButton"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="35sp" />
+
+                <Button
+                    android:id="@+id/zeroButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/keypad_button_selector"
+                    android:text="@string/_0"
+                    android:onClick="clickedNumberButton"
+                    android:tag="@string/_0"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="35sp" />
+
+                <Button
+                    android:id="@+id/decimalButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/keypad_button_selector"
+                    android:text="@string/decimal"
+                    android:tag="."
+                    android:onClick="clickedNumberButton"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="35sp" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/clearButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/keypad_button_selector"
+            android:text="@string/c"
+            android:tag="c"
+            android:onClick="clickedNumberButton"
+            android:textColor="@color/colorAccent"
+            android:textSize="35sp" />
+
+    </LinearLayout>
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

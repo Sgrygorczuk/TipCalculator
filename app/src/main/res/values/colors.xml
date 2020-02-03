@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorKeypadButtonPressed">#9CB1C4</color>
+    <color name="colorKeypadButtonUnpressed">#8A97AB</color>
+    <color name="colorActionButtonPressed">#BDE0FA</color>
+    <color name="colorActionButtonUnpressed">#6890A7</color>
+    <color name="colorPrimary">#6890A7</color>
+    <color name="colorPrimaryDark">#2F424F</color>
+    <color name="colorAccent">#FFFFFF</color>
+</resources>
