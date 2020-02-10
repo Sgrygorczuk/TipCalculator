@@ -65,6 +65,7 @@ class MainActivity : AppCompatActivity()  {
         var newButton : View = tenPercent
 
         //Sets all buttons to be drawn inactive
+        zeroPercent.setBackgroundDrawable(resources.getDrawable(R.drawable.action_button_inactive_selector))
         fivePercent.setBackgroundDrawable(resources.getDrawable(R.drawable.action_button_inactive_selector))
         tenPercent.setBackgroundDrawable(resources.getDrawable(R.drawable.action_button_inactive_selector))
         fifteenPercent.setBackgroundDrawable(resources.getDrawable(R.drawable.action_button_inactive_selector))
@@ -74,6 +75,7 @@ class MainActivity : AppCompatActivity()  {
         //Checks which button was clicked
         when (view.tag)
         {
+            "0" -> { newButton = zeroPercent }
             "5" -> { newButton = fivePercent }
             "10" -> { newButton = tenPercent }
             "15" -> { newButton = fifteenPercent }

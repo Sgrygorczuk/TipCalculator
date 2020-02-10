@@ -12,4 +12,5 @@
     <string name="_9">9</string>
     <string name="c">C</string>
     <string name="decimal">.</string>
+    <string name="Zero">$0.00</string>
 </resources>

@@ -1,5 +1,6 @@
 package com.orczukproduction.tipcalculator
 
+import android.util.Log
 import java.math.BigDecimal
 import java.math.RoundingMode
 import kotlin.math.ceil
@@ -19,8 +20,11 @@ class MainLogic {
     Input: Void
     Output: Boolean
     Purpose: To minimize the number of characters to 9 or less
+
     */
     private fun isMaxLength() : Boolean { return input.length >= 9 }
+
+    private fun isTwoDecimal() : Boolean { return input.indexOf('.') != input.length-3 || input.indexOf('.') == -1}
 
     /*
     Input: String
@@ -56,13 +60,17 @@ class MainLogic {
         //Clear choice
         if(choice == "c") {
             input = ""
-            return "$"}
+            return "$0.00"}
         //Delete choice
-        else if(input != "" && choice == "d"){input = input.substring(0, input.length - 1)}
+        else if(choice == "d") {
+            if (input.length > 1) { input = input.substring(0, input.length - 1) }
+            else {
+                input = ""
+                return "$0.00"} }
         //Add a character choice
         else if(!isMaxLength()){
             when (choice) {
-                "0" -> input += "0"
+                "0" -> {if(input.isEmpty()) {return "$0.00"} else{input += "0"}}
                 "1" -> input += "1"
                 "2" -> input += "2"
                 "3" -> input += "3"
@@ -72,13 +80,10 @@ class MainLogic {
                 "7" -> input += "7"
                 "8" -> input += "8"
                 "9" -> input += "9"
-                "." -> if(!input.contains('.')){ input += if(input == ""){ "0." } else { "." }
                 }
             }
-            //If the user input 0 followed by any number other than '.' it deletes the 0
-            if(input.length >= 2 && input[0] == '0'  && input[1] != '.') { input = input.replaceFirst("0", "")}
-        }
-        return "$${addCommas(input)}"
+
+        return "$${addCommas(addDecimals(input))}"
     }
 
     /*
@@ -89,9 +94,9 @@ class MainLogic {
     fun getTip() : String {
         return if(input == "") {
             tip = ""
-            "$"
+            "$0.00"
         } else {
-            tip = (input.toDouble() * percentage).toString()
+            tip = (addDecimals(input).toDouble() * percentage).toString()
             tip = BigDecimal(tip.toDouble()).setScale(2, RoundingMode.HALF_EVEN).toString()
             "$${addCommas(tip)}"
         }
@@ -104,9 +109,9 @@ class MainLogic {
              otherwise returns "$"
     */
     fun getTotal() : String {
-        return if(input == "") { "$"
-        } else {
-            total = (tip.toDouble() + input.toDouble()).toString()
+        return if(input == "") { "$0.00" }
+        else {
+            total = (tip.toDouble() + addDecimals(input).toDouble()).toString()
             total = when (round) {
                 "up" -> { (ceil(total.toDouble())).toString() }
                 "down" -> { (floor(total.toDouble())).toString() }
@@ -123,10 +128,23 @@ class MainLogic {
     Purpose: If there is an input calculates the split = total/people, otherwise returns "$"
     */
     fun getSplit() : String {
-        return if(input == "") { "$"
-        } else {
+        return if(input == "") { "$0.00" }
+        else {
             val spilt : String = (total.toDouble()/people).toString()
             return "$${addCommas(BigDecimal(spilt.toDouble()).setScale(2, RoundingMode.HALF_EVEN).toString())}"
+        }
+    }
+
+    /*
+    Input: String
+    Output: String
+    Purpose:
+    */
+    private fun addDecimals(input : String) : String {
+        return when (input.length) {
+            1 -> { "0.0$input" }
+            2 -> { "0.$input" }
+            else -> { "${input.substring(0,input.length-2)}.${input.substring(input.length-2)}" }
         }
     }
 
@@ -141,16 +159,18 @@ class MainLogic {
         //Checks if the original string contains any decimal values if so remove them for time being
         val adjustedInput : String = if(input.contains('.')) { input.substring(0,input.indexOf('.')) } else{ input }
         //If the current string is larger than 3 break it down into the chunks
-        var i : Int = adjustedInput.length
         if(adjustedInput.length > 3) {
-            while(i > 3){
+            var i : Int = adjustedInput.length % 3
+            //Add whatever chunk is remaining
+            output = adjustedInput.substring(0, adjustedInput.length % 3) + output
+            while(i < adjustedInput.length){
                 //Add up all of the chunks of 3 with commas placed between them
-                output = output + "," + adjustedInput.substring(i-3,i)
-                i -= 3
+                output =  output  + "," + adjustedInput.substring(i,i+3)
+                i += 3
             }
+            if(output[0] == ','){output = output.substring(1)}
         }
-        //Add whatever chunk is remaining
-        output = adjustedInput.substring(0, i) + output
+        else {output = adjustedInput}
         //If the original string had a decimal values add them back in
         if(input.contains('.')) { output += input.substring(input.indexOf('.'))}
         return output

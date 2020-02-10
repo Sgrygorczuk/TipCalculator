@@ -36,7 +36,7 @@
             android:layout_margin="5dp"
             android:layout_marginBottom="8dp"
             android:gravity="right"
-            android:text="$"
+            android:text="$0.00"
             android:layout_gravity="bottom"
             android:textSize="30sp"
             android:textColor="@color/colorAccent"  />
@@ -68,12 +68,26 @@
         app:layout_constraintBottom_toTopOf="@id/secondDivider">
 
         <Button
+            android:id="@+id/zeroPercent"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/action_button_inactive_selector"
+            android:onClick="percentButton"
+            android:tag="0"
+            android:text="0%"
+            android:textAllCaps="false"
+            android:textColor="@color/colorAccent"
+            android:textSize="20dp" />
+
+        <Button
             android:id="@+id/fivePercent"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_margin="5dp"
             android:layout_weight="1"
-            android:background="@drawable/action_button_active_selector"
+            android:background="@drawable/action_button_inactive_selector"
             android:onClick="percentButton"
             android:tag="5"
             android:text="5%"
@@ -87,7 +101,7 @@
             android:layout_height="40dp"
             android:layout_margin="5dp"
             android:layout_weight="1"
-            android:background="@drawable/action_button_inactive_selector"
+            android:background="@drawable/action_button_active_selector"
             android:onClick="percentButton"
             android:tag="10"
             android:text="10%"
@@ -170,7 +184,7 @@
             android:layout_margin="5dp"
             android:layout_marginBottom="8dp"
             android:gravity="right"
-            android:text="$"
+            android:text="$0.00"
             android:layout_gravity="bottom"
             android:textSize="30sp"
             android:textColor="@color/colorAccent"  />
@@ -183,7 +197,7 @@
         android:layout_marginHorizontal="10dp"
         android:layout_marginVertical="5dp"
         android:background="@color/colorAccent"
-        android:scaleY="0.5"
+        android:scaleY="0.2"
         app:layout_constraintBottom_toTopOf="@id/upDown"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -271,7 +285,7 @@
             android:layout_weight="1"
             android:layout_marginBottom="8dp"
             android:gravity="right"
-            android:text="$"
+            android:text="$0.00"
             android:layout_margin="5dp"
             android:layout_gravity="bottom"
             android:textSize="30sp"
@@ -353,7 +367,7 @@
         android:layout_marginBottom="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/fifthDivider"
+        app:layout_constraintBottom_toTopOf="@id/buttonLayout"
         app:layout_constraintTop_toBottomOf="@id/guestLayout">
 
         <TextView
@@ -372,7 +386,7 @@
             android:layout_weight="1"
             android:layout_marginBottom="8dp"
             android:gravity="right"
-            android:text="$"
+            android:text="@string/Zero"
             android:layout_margin="5dp"
             android:layout_gravity="bottom"
             android:textSize="30sp"
@@ -380,50 +394,28 @@
 
     </LinearLayout>
 
-
-    <View
-        android:id="@+id/fifthDivider"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginHorizontal="10dp"
-        android:layout_marginVertical="5dp"
-        android:background="@color/colorAccent"
-        android:scaleY="0.2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/splitLayout"
-        app:layout_constraintBottom_toTopOf="@id/buttonLayout"/>
-
     <LinearLayout
         android:id="@+id/buttonLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="10dp"
-        android:layout_marginVertical="5dp"
-        android:background="@color/colorPrimary"
-        android:orientation="horizontal"
+        android:background="@drawable/keypad_border"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fifthDivider">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="6dp"
-            android:orientation="vertical">
+        app:layout_constraintStart_toStartOf="parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="15dp"
+                android:layout_marginHorizontal="10dp"
                 android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/sevenButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="2dp"
+                    android:layout_margin="4dp"
                     android:layout_weight="1"
                     android:background="@drawable/keypad_button_selector"
                     android:onClick="clickedNumberButton"
@@ -436,7 +428,7 @@
                     android:id="@+id/eightButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="2dp"
+                    android:layout_margin="4dp"
                     android:layout_weight="1"
                     android:background="@drawable/keypad_button_selector"
                     android:text="@string/_8"
@@ -449,11 +441,24 @@
                     android:id="@+id/nineButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="2dp"
+                    android:layout_margin="4dp"
                     android:layout_weight="1"
                     android:background="@drawable/keypad_button_selector"
                     android:text="@string/_9"
                     android:tag="@string/_9"
+                    android:onClick="clickedNumberButton"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="35sp" />
+
+                <Button
+                    android:id="@+id/clearButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/keypad_button_selector"
+                    android:text="@string/c"
+                    android:tag="c"
                     android:onClick="clickedNumberButton"
                     android:textColor="@color/colorAccent"
                     android:textSize="35sp" />
@@ -463,13 +468,14 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginHorizontal="10dp"
                 android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/fourButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="2dp"
+                    android:layout_margin="4dp"
                     android:layout_weight="1"
                     android:background="@drawable/keypad_button_selector"
                     android:text="@string/_4"
@@ -482,7 +488,7 @@
                     android:id="@+id/fiveButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="2dp"
+                    android:layout_margin="4dp"
                     android:layout_weight="1"
                     android:background="@drawable/keypad_button_selector"
                     android:text="@string/_5"
@@ -495,7 +501,7 @@
                     android:id="@+id/sixButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="2dp"
+                    android:layout_margin="4dp"
                     android:layout_weight="1"
                     android:background="@drawable/keypad_button_selector"
                     android:text="@string/_6"
@@ -504,19 +510,33 @@
                     android:textColor="@color/colorAccent"
                     android:textSize="35sp" />
 
+                <Button
+                    android:id="@+id/deleteButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/keypad_button_selector"
+                    android:text="⌫"
+                    android:onClick="clickedNumberButton"
+                    android:tag="d"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="35sp" />
             </LinearLayout>
 
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginBottom="10dp"
                 android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/oneButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="2dp"
+                    android:layout_margin="4dp"
                     android:layout_weight="1"
                     android:background="@drawable/keypad_button_selector"
                     android:text="@string/_1"
@@ -529,7 +549,7 @@
                     android:id="@+id/twoButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="2dp"
+                    android:layout_margin="4dp"
                     android:layout_weight="1"
                     android:background="@drawable/keypad_button_selector"
                     android:text="@string/_2"
@@ -542,7 +562,7 @@
                     android:id="@+id/threeButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="2dp"
+                    android:layout_margin="4dp"
                     android:layout_weight="1"
                     android:background="@drawable/keypad_button_selector"
                     android:text="@string/_3"
@@ -551,31 +571,11 @@
                     android:textColor="@color/colorAccent"
                     android:textSize="35sp" />
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/deleteButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="2dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/keypad_button_selector"
-                    android:tag="d"
-                    android:text="⌫"
-                    android:onClick="clickedNumberButton"
-                    android:textColor="@color/colorAccent"
-                    android:textSize="35sp" />
-
                 <Button
                     android:id="@+id/zeroButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="2dp"
+                    android:layout_margin="4dp"
                     android:layout_weight="1"
                     android:background="@drawable/keypad_button_selector"
                     android:text="@string/_0"
@@ -583,37 +583,8 @@
                     android:tag="@string/_0"
                     android:textColor="@color/colorAccent"
                     android:textSize="35sp" />
-
-                <Button
-                    android:id="@+id/decimalButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="2dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/keypad_button_selector"
-                    android:text="@string/decimal"
-                    android:tag="."
-                    android:onClick="clickedNumberButton"
-                    android:textColor="@color/colorAccent"
-                    android:textSize="35sp" />
-
             </LinearLayout>
         </LinearLayout>
-
-        <Button
-            android:id="@+id/clearButton"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/keypad_button_selector"
-            android:text="@string/c"
-            android:tag="c"
-            android:onClick="clickedNumberButton"
-            android:textColor="@color/colorAccent"
-            android:textSize="35sp" />
-
-    </LinearLayout>
-
 
 
 
