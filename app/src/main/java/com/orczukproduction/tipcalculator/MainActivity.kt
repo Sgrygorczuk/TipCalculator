@@ -1,6 +1,8 @@
 package com.orczukproduction.tipcalculator
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.View
 import android.widget.SeekBar
@@ -15,6 +17,7 @@ class MainActivity : AppCompatActivity()  {
                                         //all of the information that is being displayed to the user
     private var upDownState = ""        //Keeps track of which button is pressed so that if it's clicked again it
                                         //can be drawn as inactive
+    private var blink = false           //Keeps track of if the cursor is '|' or ''
 
     /*
     Input: Bundle
@@ -26,6 +29,13 @@ class MainActivity : AppCompatActivity()  {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        //Sets Up the Blinking Effect
+        val mainHandler = Handler(Looper.getMainLooper())
+        mainHandler.post(object : Runnable {override fun run() {
+            blinking()
+            mainHandler.postDelayed(this, 400)}})
+
+        //Sets up the actions on the SeekBar
         guestSeekBar.setOnSeekBarChangeListener(object : OnSeekBarChangeListener {
             override fun onStopTrackingTouch(seekBar: SeekBar) {}
             override fun onStartTrackingTouch(seekBar: SeekBar) {}
@@ -129,5 +139,21 @@ class MainActivity : AppCompatActivity()  {
         logicUnit.setRounding(upDownState)
         totalText.text = logicUnit.getTotal()
         splitText.text = logicUnit.getSplit()
+    }
+
+    /*
+    Input: Void
+    Output: Void
+    Purpose: Every 400 ms it updates the state of the cursor between being on '|' and off ''
+    */
+    private fun blinking() {
+        if(blink) {
+            cursorTextView.text = ""
+            blink = false
+        }
+        else{
+            cursorTextView.text = "|"
+            blink = true
+        }
     }
 }
