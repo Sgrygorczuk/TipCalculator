@@ -386,6 +386,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="Split:"
+            android:layout_weight="3"
             android:layout_margin="5dp"
             android:gravity="bottom"
             android:layout_gravity="bottom"
@@ -395,7 +396,7 @@
             android:id="@+id/splitText"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:layout_marginBottom="8dp"
             android:gravity="right"
             android:text="@string/Zero"
@@ -403,6 +404,19 @@
             android:layout_gravity="bottom"
             android:textSize="30sp"
             android:textColor="@color/colorAccent"  />
+
+        <ImageButton
+            android:layout_width="20dp"
+            android:layout_height="50dp"
+            android:layout_weight=".1"
+            android:scaleX="0.8"
+            android:scaleY="0.8"
+            android:background="@drawable/action_button_inactive_selector"
+            android:src="@drawable/ic_mode_copy"
+            android:onClick="copyButton"
+            android:scaleType="fitCenter"
+            android:tag="copy"/>
+
 
     </LinearLayout>
 

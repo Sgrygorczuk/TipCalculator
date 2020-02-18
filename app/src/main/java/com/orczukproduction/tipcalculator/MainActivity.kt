@@ -1,5 +1,9 @@
 package com.orczukproduction.tipcalculator
 
+import android.R.attr.label
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -9,6 +13,7 @@ import android.widget.SeekBar
 import android.widget.SeekBar.OnSeekBarChangeListener
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
+
 
 class MainActivity : AppCompatActivity()  {
 
@@ -62,6 +67,19 @@ class MainActivity : AppCompatActivity()  {
         tipText.text = logicUnit.getTip()
         totalText.text = logicUnit.getTotal()
         splitText.text = logicUnit.getSplit()
+    }
+
+    /*
+    Input: View
+    Output: Void
+    Purpose: A button that allows user to save the split so that they can send the text to their friends
+    */
+    fun copyButton(view : View){
+        Log.d("Admin", "MainActivity: Keypad button ${view.tag} was clicked")
+        //Adds the character to the parsing class and updates the UI
+        val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+        val clip = ClipData.newPlainText("Copy Split", logicUnit.getSplit())
+        clipboard.setPrimaryClip(clip)
     }
 
     /*
